@@ -4,10 +4,73 @@ body {
   margin: 0;
   padding: 0;
 }
-
+nav{
+  background-color: gray;
+  padding: 10px;
+}
+.navbar {
+  list-style: none;
+  margin:0;
+  padding: 0;
+  display: flex;
+  justify-content: end;
+}
+.navbar li {
+  margin-right: 20px;
+  font-size: 30px;
+}
+.navbar li a{
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
 #logo-image {
   width: 30px;
   margin-right: 10px;
 }
 
-/* Add your own custom styles here */
+.books-container {
+  display:flex;
+  flex-wrap:wrap;
+  list-style: none;
+  padding: 0;
+}
+
+.books-container li {
+  margin: 10px;
+  border: 3px solid black;
+  border-radius:4%;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.books-container li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.books-container li img {
+  width: 200px;
+  height: 200px;
+  margin-top: 10px;
+}
+
+
+.single-book-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  border: 3px solid black;
+  border-radius: 5%;
+}
+
+.single-book-container img {
+  max-width: 100%;
+  height: 500px;
+  margin-bottom: 20px;
+}
