@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
 
-export default function Login() {
+export default function Login({ setToken }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -19,6 +19,7 @@ export default function Login() {
 
       if (response.data.token) {
         console.log('Login successful!');
+        setToken(response.data.token)
         navigate('/account',{state:{email,password}})
       } else {
         setError('Invalid email or password.');
@@ -31,7 +32,7 @@ export default function Login() {
   };
 
   return (
-    <div>
+    <div className='login'>
       <h2>Login</h2>
       {error && <p className="error">{error}</p>}
       <form>

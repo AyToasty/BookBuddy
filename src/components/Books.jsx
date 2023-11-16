@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-export default function Books (){
+export default function Books ({ token }){
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
@@ -19,21 +19,25 @@ export default function Books (){
     fetchBooks();
   }, []);
 
-  return <ul className='books-container'>
+  return <>
+  <h2>Books Catalog</h2>
+  <ul className='books-container'>
     {
       books.length ?
         books.map(book => {
           return <li key={book.id}>
-            <Link to={`/books/${book.id}`}>{book.title}</Link>
+            <Link to={`/books/${book.id}`}>
+            <h4>{book.title}</h4>
             <img src={book.coverimage} />
             <h4>{book.author}</h4>
-            
+            </Link>
           </li>
         })
         :
         <h2>Loading ...</h2>
     }
   </ul>
+  </>
 }
 
  

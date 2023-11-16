@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Books from './components/Books';
 import SingleBook from './components/SingleBook';
@@ -6,24 +6,31 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Account from './components/Account';
 import Navigations from './components/Navigations';
+import bookLogo from './assets/books.png'
 
-function App() {
-  // const [token, setToken] = useState(null);
+export default function App() {
+  const [token, setToken] = useState(null);
   
   return (
     <Router>
-      <div className="App">
-        <Navigations />
+      <>
+        <div className="header-container">
+          <h1 className='heading'>
+            <img id="logo-image" src={bookLogo} alt="Book Logo" />
+            Book Buddy
+          </h1>
+
+          <Navigations token={token} />
+        </div>
+
         <Routes>
-          <Route path="/books/:id" element={<SingleBook />}></Route>
-          <Route path="/books" element={<Books />}></Route>
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/register" element={<Register />}></Route>
-          <Route path="/account" element={<Account />}></Route>
+          <Route path="/books/:id" element={<SingleBook token={token} />} />
+          <Route path="/books" element={<Books token={token} />} />
+          <Route path="/account" element={<Account token={token} setToken={setToken}/>} />
+          <Route path="/login" element={<Login setToken={setToken} />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
-      </div>
+      </>
     </Router>
   );
 }
-
-export default App;
